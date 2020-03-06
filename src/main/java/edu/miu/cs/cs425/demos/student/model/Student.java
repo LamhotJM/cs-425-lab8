@@ -3,6 +3,7 @@ package edu.miu.cs.cs425.demos.student.model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +17,31 @@ public class Student {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long studentId;
+	
+	@Column(name = "student_number", nullable=false)
 	private  String studentNumber;
+	
+	public Student(String studentNumber, String firstName, String middleName, String lastName, Float cgpa,
+			LocalDate dateOfEnrollment) {
+		super();
+		this.studentNumber = studentNumber;
+		this.firstName = firstName;
+		this.middleName = middleName;
+		this.lastName = lastName;
+		this.cgpa = cgpa;
+		this.dateOfEnrollment = dateOfEnrollment;
+	}
+
+
+	@Column(name = "first_name", nullable=false)
 	private String firstName ;
 	private String middleName;
+	
+	@Column(name = "last_name", nullable=false)
+	private String lastName;
+	private Float cgpa;
+	private LocalDate dateOfEnrollment;
+
 	public Student(String studentNumber, String firstName, String lastName,
 			LocalDate dateOfEnrollment) {
 		super();
@@ -84,9 +107,6 @@ public class Student {
 		this.dateOfEnrollment = dateOfEnrollment;
 	}
 
-	private String lastName;
-	private Float cgpa;
-	private LocalDate dateOfEnrollment;
 
 	public Student() {
 		// TODO Auto-generated constructor stub
